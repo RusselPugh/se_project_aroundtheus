@@ -1,0 +1,30 @@
+.footer {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  margin-top: 67px;
+  margin-bottom: 60px;
+}
+
+.footer__description {
+  margin: 0;
+  max-width: 318px;
+}
+
+@media screen and (max-width: 618px) {
+  .footer {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 48px;
+    margin-bottom: 36px;
+  }
+
+  .footer__description {
+    margin: 0;
+    max-width: 282px;
+  }
+}
