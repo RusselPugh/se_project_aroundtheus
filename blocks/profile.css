@@ -13,8 +13,7 @@
 }
 
 .profile__image {
-  width: 120px;
-  height: 120px;
+  object-fit: cover;
   padding-right: 30px;
 }
 
@@ -44,8 +43,7 @@
   grid-area: button;
   margin: 15px 0 9px 18px;
   padding: 0;
-  border-width: 1px;
-  border-color: white;
+  border: 1px solid white;
 }
 
 .profile__edit-button:hover {
@@ -58,8 +56,7 @@
   width: 150px;
   margin-left: auto;
   padding: 0;
-  border-width: 2px;
-  border-color: #fff;
+  border: 2px solid #fff;
 }
 
 .profile__add-button:hover {
