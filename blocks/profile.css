@@ -24,6 +24,7 @@
   line-height: 48px;
   grid-area: title;
   margin: 0;
+  text-wrap: nowrap;
 }
 
 .profile__description {
