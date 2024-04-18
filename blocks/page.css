@@ -19,6 +19,10 @@
 
 @media screen and (min-width: 320px) {
   .page {
+    padding: 0%;
+  }
+
+  .page__wrapper {
     padding-left: 19px;
     padding-right: 19px;
   }

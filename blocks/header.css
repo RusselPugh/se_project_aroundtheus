@@ -4,6 +4,12 @@
   border-bottom: 1px solid rgb(84 84 84 / 0.7);
 }
 
+@media screen and (max-width: 917px) {
+  .header__image {
+    padding-left: 19px;
+  }
+}
+
 @media screen and (max-width: 618px) {
   .header {
     margin-top: 28px;
@@ -13,6 +19,6 @@
   .header__image {
     width: 126px;
     height: 24px;
-    padding-left: 8px;
+    padding-left: 27px;
   }
 }
