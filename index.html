@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, user-scalable-no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta content="ie=edge" http-equiv="X-UA-Compatible" />
     <meta name="description" content="Around The US" />
@@ -34,7 +34,11 @@
             />
             <div class="profile__info">
               <h1 class="profile__title">Jacques Cousteau</h1>
-              <button class="profile__edit-button" type="button"></button>
+              <button
+                class="profile__edit-button"
+                id="profile-edit-button"
+                type="button"
+              ></button>
               <p class="profile__description">Explorer</p>
             </div>
             <button class="profile__add-button" type="button"></button>
@@ -115,9 +119,13 @@
         </footer>
       </div>
     </div>
-    <div class="modal modal_opened">
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close-button" type="button"></button>
+        <button
+          class="modal__close-button"
+          id="modal-close-button"
+          type="button"
+        ></button>
         <p class="modal__heading">Edit profile</p>
         <form class="modal__form">
           <input
