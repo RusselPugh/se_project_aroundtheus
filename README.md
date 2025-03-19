@@ -1,10 +1,11 @@
-# Project 3: Around The U.S.
+# Project 4: Around The U.S.
 
 ### Technologies Used
 
 - HTML
 - Figma
 - CSS
+- Javascript
 
 **Description**
 
@@ -14,7 +15,7 @@ Around The U.S. was created to demonstrate all the elements on a page are displa
 
 Using coding that combined both Grid and Flexbox allowed for this to be achieved, while also adhering to the BEM methodology for the overall file sturcture.
 
-- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+- [Link to the project on Figma](https://www.figma.com/design/EO5AaNCuzzFL7X5gSY7HwQ/Sprint-4_-Around-The-U.S.-_-desktop-%2B-mobile?node-id=0-1&p=f&t=0hum0ZKaMONkJqXU-0)
 - [Link to the video poject overview](https://drive.google.com/file/d/1-SuQPeBQKOZyRb8kMXj7m5VdaGIiRvBH/view?usp=drivesdk)
 
 **GitHub Pages**
