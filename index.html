@@ -44,7 +44,17 @@
             <button class="profile__add-button" type="button"></button>
           </section>
           <section class="cards page__section">
-            <ul class="cards__list"></ul>
+            <ul class="cards__list">
+              <template id="card-template">
+                <li class="card">
+                  <img src="" alt="" class="card__image" />
+                  <div class="card__description">
+                    <h2 class="card__title"></h2>
+                    <button class="card__like-button" type="button"></button>
+                  </div>
+                </li>
+              </template>
+            </ul>
           </section>
         </main>
         <footer class="footer page__section">
@@ -55,18 +65,20 @@
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
+          aria-label="close"
           class="modal__close-button"
           id="profile-edit-close-button"
           type="button"
         ></button>
         <p class="modal__heading">Edit profile</p>
-        <form class="modal__form">
+        <form class="modal__form" name="profile-form">
           <input
             class="modal__input"
             type="text"
             name="title"
             id="profile-title-input"
             placeholder="Name"
+            required
           />
           <input
             class="modal__input"
@@ -74,22 +86,13 @@
             name="description"
             id="profile-description-input"
             placeholder="Description"
+            required
           />
           <button class="modal__save-button" type="submit">Save</button>
         </form>
       </div>
     </div>
-
-    <template id="card-template">
-      <li class="card">
-        <img src="" alt="" class="card__image" />
-        <div class="card__description">
-          <h2 class="card__title"></h2>
-          <button class="card__like-button" type="button"></button>
-        </div>
-      </li>
-    </template>
-
+    <script src="./scripts/cards.js" defer></script>
     <script src="./scripts/index.js" defer></script>
   </body>
 </html>
