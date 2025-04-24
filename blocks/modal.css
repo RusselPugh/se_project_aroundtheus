@@ -56,6 +56,8 @@
   position: absolute;
   margin: 0;
   top: calc(100% + 10px);
+  max-width: 75vw;
+  max-height: 75vh;
 }
 
 .modal__close-button {
