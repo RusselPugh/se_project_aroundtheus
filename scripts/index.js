@@ -94,15 +94,14 @@ function getCardElement(cardData) {
     likeButton.classList.toggle("card__like-button_active");
   });
   cardImageEl.addEventListener("click", () => {
-    imageModal.classList.add("modal_opened");
+    openPopup(imageModal);
+    imageEl.src = cardData.link;
+    imageEl.alt = cardData.name;
+    imageName.textContent = cardData.name;
   });
   trashButton.addEventListener("click", () => {
     cardElement.remove();
   });
-
-  imageEl.src = cardData.link;
-  imageEl.alt = cardData.name;
-  imageName.textContent = cardData.name;
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
