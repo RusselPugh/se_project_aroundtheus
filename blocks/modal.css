@@ -96,14 +96,29 @@
   max-width: 358px;
 }
 
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 27px;
+  height: 44px;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  overflow: visible;
+}
+
 .modal__input {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
+  margin: 0 0 5px;
   padding: 0 0 14px;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+}
+
+.modal__input_type_error {
+  border: none;
+  border-bottom: 1px solid #ff0000;
 }
 
 .modal__save-button {
@@ -121,6 +136,21 @@
 
 .modal__save-button:hover {
   opacity: 80%;
+}
+
+.modal__error {
+  font-size: 12px;
+  line-height: 17px;
+  color: #ff0000;
+  top: calc(100% + 5px);
+  left: 0;
+  transition: opacity 0.3s;
+  margin: 0;
+  padding: 0;
+}
+
+.modal__button_disabled:disabled {
+  opacity: 20%;
 }
 
 @media screen and (max-width: 618px) {
