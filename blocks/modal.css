@@ -149,7 +149,7 @@
   padding: 0;
 }
 
-.modal__button_disabled:disabled {
+.modal__save-button_disabled:disabled {
   opacity: 20%;
 }
 

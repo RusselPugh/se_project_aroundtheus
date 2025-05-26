@@ -34,30 +34,38 @@ function checkInputValidity(formElement, inputElement, options) {
 function hasInvalidInput(inputList) {
   return !inputList.every((inputElement) => inputElement.validity.valid);
 }
-
-function toggleButtonState(
-  inputElements,
-  submitButton,
-  { inactiveButtonClass }
-) {
-  if (hasInvalidInput(inputElements)) {
-    submitButton.classList.add(inactiveButtonClass);
-    return (submitButton.disabled = true);
-  }
-  submitButton.classList.remove(inactiveButtonClass);
-  submitButton.disabled = false;
+function callInputValidity(formElement, options) {
+  const { inputSelector } = options;
+  const inputElements = [...formElement.querySelectorAll(inputSelector)];
+  inputElements.forEach((inputElement) => {
+    checkInputValidity(formElement, inputElement, options);
+  });
 }
 
 function setEventListeners(formElement, options) {
   const { inputSelector } = options;
   const inputElements = [...formElement.querySelectorAll(inputSelector)];
   const submitButton = formElement.querySelector(".modal__save-button");
+  toggleButtonState(inputElements, submitButton, options);
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (evt) => {
       checkInputValidity(formElement, inputElement, options);
       toggleButtonState(inputElements, submitButton, options);
     });
   });
+}
+
+function toggleButtonState(inputElements, submitButton, options) {
+  if (hasInvalidInput(inputElements)) {
+    disableButton(submitButton, options);
+  }
+  submitButton.classList.remove(options.inactiveButtonClass);
+  submitButton.disabled = false;
+}
+
+function disableButton(submitButton, options) {
+  submitButton.classList.add(options.inactiveButtonClass);
+  submitButton.disabled = true;
 }
 
 function enableValidation(options) {
@@ -75,7 +83,7 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save-button",
-  inactiveButtonClass: "modal__button_disabled",
+  inactiveButtonClass: "modal__save-button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
