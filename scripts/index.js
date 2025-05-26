@@ -41,7 +41,6 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const cardAddButton = document.querySelector("#profile-add-button");
-const closeButtons = document.querySelectorAll(".modal__close-button");
 const profileSubmitButton = profileEditForm.querySelector(
   ".modal__save-button"
 );
@@ -143,18 +142,18 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   disableButton(profileSubmitButton, config);
-  callInputValidity(profileEditForm, config);
+  resetInputValidity(profileEditForm, config);
   openPopup(profileEditModal);
 });
 
-closeButtons.forEach((button) => {
-  const modal = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(modal));
-});
-
 modals.forEach((modal) => {
-  modal.addEventListener("click", (evt) => {
-    if (evt.target == modal) closePopup(modal);
+  modal.addEventListener("mousedown", (evt) => {
+    if (
+      evt.target === modal ||
+      evt.target.classList.contains("modal__close-button")
+    ) {
+      closePopup(modal);
+    }
   });
 });
 

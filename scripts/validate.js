@@ -34,7 +34,7 @@ function checkInputValidity(formElement, inputElement, options) {
 function hasInvalidInput(inputList) {
   return !inputList.every((inputElement) => inputElement.validity.valid);
 }
-function callInputValidity(formElement, options) {
+function resetInputValidity(formElement, options) {
   const { inputSelector } = options;
   const inputElements = [...formElement.querySelectorAll(inputSelector)];
   inputElements.forEach((inputElement) => {
