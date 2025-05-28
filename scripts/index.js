@@ -41,10 +41,6 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const cardAddButton = document.querySelector("#profile-add-button");
-const profileSubmitButton = profileEditForm.querySelector(
-  ".modal__save-button"
-);
-const cardSubmitButton = cardAddForm.querySelector(".modal__save-button");
 
 // Form data
 const profileTitleInput = profileEditForm.querySelector(
@@ -96,7 +92,6 @@ function handleProfileEditSubmit(evt) {
   profileDescription.textContent = profileDescriptionInput.value;
   const button = evt.target.querySelector(".modal__save-button");
   closePopup(profileEditModal);
-  disableButton(button, config);
 }
 
 function handleCardAddFormSubmit(evt) {
@@ -141,7 +136,6 @@ cardAddForm.addEventListener("submit", handleCardAddFormSubmit);
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  disableButton(profileSubmitButton, config);
   resetInputValidity(profileEditForm, config);
   openPopup(profileEditModal);
 });
@@ -159,7 +153,6 @@ modals.forEach((modal) => {
 
 // Add new card
 cardAddButton.addEventListener("click", () => {
-  disableButton(cardSubmitButton, config);
   openPopup(cardAddModal);
 });
 

@@ -43,9 +43,9 @@ function resetInputValidity(formElement, options) {
 }
 
 function setEventListeners(formElement, options) {
-  const { inputSelector } = options;
+  const { inputSelector, submitButtonSelector } = options;
   const inputElements = [...formElement.querySelectorAll(inputSelector)];
-  const submitButton = formElement.querySelector(".modal__save-button");
+  const submitButton = formElement.querySelector(submitButtonSelector);
   toggleButtonState(inputElements, submitButton, options);
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (evt) => {
@@ -58,9 +58,10 @@ function setEventListeners(formElement, options) {
 function toggleButtonState(inputElements, submitButton, options) {
   if (hasInvalidInput(inputElements)) {
     disableButton(submitButton, options);
+  } else {
+    submitButton.classList.remove(options.inactiveButtonClass);
+    submitButton.disabled = false;
   }
-  submitButton.classList.remove(options.inactiveButtonClass);
-  submitButton.disabled = false;
 }
 
 function disableButton(submitButton, options) {

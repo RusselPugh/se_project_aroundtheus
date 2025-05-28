@@ -150,6 +150,9 @@
 }
 
 .modal__save-button_disabled:disabled {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
   opacity: 20%;
 }
 
