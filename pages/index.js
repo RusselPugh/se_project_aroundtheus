@@ -1,3 +1,6 @@
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -24,6 +27,12 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+const createCard = (cardData) => {
+  return new Card(cardData, cardSelector, handleImageClick).getView();
+};
+// const card = new Card(data, "#card-template");
+// card.getView();
 
 const cardTemplate = document
   .querySelector("#card-template")
@@ -71,6 +80,31 @@ const handleEscUp = (evt) => {
   handleEscEvent(evt, closePopup);
 };
 
+const handleLikeButton = (evt) => {
+  evt.target.classList.toggle("card__like-button_active");
+};
+
+const validationSettings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__save-button",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const profileEditFormValidator = new FormValidator(
+  validationSettings,
+  profileEditForm
+);
+const cardAddFormValidator = new FormValidator(validationSettings, cardAddForm);
+
+profileEditFormValidator.enableValidation();
+cardAddFormValidator.enableValidation();
+
+const handleTrashButton = (evt) => {
+  evt.target.closest(".card").remove();
+};
+
 function openPopup(popup) {
   popup.classList.add("modal_opened");
   document.addEventListener("keyup", handleEscUp);
@@ -84,6 +118,11 @@ function closePopup(popup) {
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
+}
+
+function disableButton(submitButton, validationSettings) {
+  submitButton.classList.add(validationSettings.inactiveButtonClass);
+  submitButton.disabled = true;
 }
 
 function handleProfileEditSubmit(evt) {
@@ -101,7 +140,7 @@ function handleCardAddFormSubmit(evt) {
   const button = evt.target.querySelector(".modal__save-button");
   renderCard({ name, link }, cardWrap);
   closePopup(cardAddModal);
-  disableButton(button, config);
+  disableButton(button, validationSettings);
   cardAddForm.reset();
 }
 
@@ -111,18 +150,21 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const trashButton = cardElement.querySelector(".card__trash-button");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
   cardImageEl.addEventListener("click", () => {
     openPopup(imageModal);
     imageEl.src = cardData.link;
     imageEl.alt = cardData.name;
     imageName.textContent = cardData.name;
   });
-  trashButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  const handleImageClick = () => {
+    openPopup(imageModal);
+    imageEl.src = cardData.link;
+    imageEl.alt = cardData.name;
+    imageName.textContent = cardData.name;
+  };
+  cardImageEl.addEventListener("click", handleImageClick);
+  trashButton.addEventListener("click", handleTrashButton);
+  likeButton.addEventListener("click", handleLikeButton);
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
@@ -136,7 +178,7 @@ cardAddForm.addEventListener("submit", handleCardAddFormSubmit);
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  resetInputValidity(profileEditForm, config);
+  //resetInputValidity(profileEditForm, validationSettings);
   openPopup(profileEditModal);
 });
 
