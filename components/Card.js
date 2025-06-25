@@ -1,26 +1,3 @@
-const imageModal = document.querySelector("#image-modal");
-const imageEl = imageModal.querySelector(".modal__image-preview");
-const imageName = imageModal.querySelector(".modal__image-preview-name");
-
-function closePopup(popup) {
-  popup.classList.remove("modal_opened");
-  document.removeEventListener("keyup", handleEscUp);
-}
-
-const handleEscUp = (evt) => {
-  evt.preventDefault();
-  handleEscEvent(evt, closePopup);
-};
-
-const handleEscEvent = (evt, action) => {
-  if (evt.key === "Escape") {
-    const activePopup = document.querySelector(".modal_opened");
-    action(activePopup);
-  }
-};
-
-//Above code is temporary
-
 class Card {
   constructor(cardData, cardSelector, handleImageClick) {
     this._name = cardData.name;

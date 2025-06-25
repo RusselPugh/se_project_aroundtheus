@@ -117,13 +117,14 @@ function closePopup(popup) {
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
+  //const cardElement = new Card(cardData, cardSelector, handleImageClick).getView();
   wrapper.prepend(cardElement);
 }
 
-function disableButton(submitButton, validationSettings) {
-  submitButton.classList.add(validationSettings.inactiveButtonClass);
-  submitButton.disabled = true;
-}
+// function disableButton(submitButton, validationSettings) {
+//   submitButton.classList.add(validationSettings.inactiveButtonClass);
+//   submitButton.disabled = true;
+// }
 
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
@@ -140,8 +141,8 @@ function handleCardAddFormSubmit(evt) {
   const button = evt.target.querySelector(".modal__save-button");
   renderCard({ name, link }, cardWrap);
   closePopup(cardAddModal);
-  disableButton(button, validationSettings);
-  cardAddForm.reset();
+  //disableButton(button, validationSettings);
+  cardAddFormValidator.resetValidation();
 }
 
 function getCardElement(cardData) {
@@ -176,9 +177,9 @@ function getCardElement(cardData) {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 cardAddForm.addEventListener("submit", handleCardAddFormSubmit);
 profileEditButton.addEventListener("click", () => {
+  profileEditFormValidator.resetValidation();
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  //resetInputValidity(profileEditForm, validationSettings);
   openPopup(profileEditModal);
 });
 
@@ -196,6 +197,7 @@ modals.forEach((modal) => {
 // Add new card
 cardAddButton.addEventListener("click", () => {
   openPopup(cardAddModal);
+  cardAddFormValidator.resetValidation();
 });
 
 initialCards.forEach((cardData) => renderCard(cardData, cardWrap));
