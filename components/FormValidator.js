@@ -28,17 +28,17 @@ class FormValidator {
   }
 
   _toggleButtonState() {
-    if (this._hasInvalidInput(this._inputElements)) {
-      this._disableButton(this._submitButton);
+    if (this._hasInvalidInput()) {
+      this._disableButton();
     } else {
       this._submitButton.classList.remove(this._inactiveButtonClass);
       this._submitButton.disabled = false;
     }
   }
 
-  _disableButton(submitButton) {
-    submitButton.classList.add(this._inactiveButtonClass);
-    submitButton.disabled = true;
+  _disableButton() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
   }
 
   _hasInvalidInput() {
